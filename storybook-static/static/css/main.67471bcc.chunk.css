@@ -1,7 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,800);
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
  * ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
- @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,800');
  html,
  body {
    margin: 0;
@@ -157,8 +157,6 @@
  }
  input[type="search"] {
    -webkit-appearance: textfield;
-   -webkit-box-sizing: content-box;
-   -moz-box-sizing: content-box;
    box-sizing: content-box;
  }
  input[type="search"]::-webkit-search-decoration {
@@ -168,12 +166,29 @@
    overflow: auto;
    vertical-align: top;
  }
+ @-webkit-keyframes spin {
+   0% {
+     transform: rotate(0deg);
+   }
+   100% {
+     transform: rotate(359deg);
+   }
+ }
  @keyframes spin {
    0% {
      transform: rotate(0deg);
    }
    100% {
      transform: rotate(359deg);
+   }
+ }
+ @-webkit-keyframes glow {
+   0%,
+   100% {
+     opacity: 1;
+   }
+   50% {
+     opacity: 0.5;
    }
  }
  @keyframes glow {
@@ -190,7 +205,9 @@
    word-break: break-all;
    -ms-word-break: break-all;
    word-break: break-word;
-   hyphens: auto;
+   -webkit-hyphens: auto;
+       -ms-hyphens: auto;
+           hyphens: auto;
  }
  .type-light {
    font-family: 'Nunito Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -298,6 +315,15 @@
    color: #333;
    outline: none;
  }
+ input[type="text"] ::-webkit-input-placeholder, input[type="email"] ::-webkit-input-placeholder, input[type="password"] ::-webkit-input-placeholder, textarea ::-webkit-input-placeholder {
+   color: #778b91;
+ }
+ input[type="text"] :-ms-input-placeholder, input[type="email"] :-ms-input-placeholder, input[type="password"] :-ms-input-placeholder, textarea :-ms-input-placeholder {
+   color: #778b91;
+ }
+ input[type="text"] ::-ms-input-placeholder, input[type="email"] ::-ms-input-placeholder, input[type="password"] ::-ms-input-placeholder, textarea ::-ms-input-placeholder {
+   color: #778b91;
+ }
  input[type="text"] ::placeholder,
  input[type="email"] ::placeholder,
  input[type="password"] ::placeholder,
@@ -348,6 +374,7 @@
    speak: none;
    font-style: normal;
    font-weight: normal;
+   font-feature-settings: normal;
    font-variant: normal;
    text-transform: none;
    line-height: 1;
@@ -402,6 +429,7 @@
    speak: none;
    font-style: normal;
    font-weight: normal;
+   font-feature-settings: normal;
    font-variant: normal;
    text-transform: none;
    line-height: 1;
@@ -825,7 +853,8 @@
  }
  .list-heading .icon-sync {
    opacity: 1;
-   animation: spin 2s infinite linear;
+   -webkit-animation: spin 2s infinite linear;
+           animation: spin 2s infinite linear;
    display: inline-block;
    margin-right: 4px;
  }
@@ -843,7 +872,7 @@
    overflow: hidden;
    text-overflow: ellipsis;
    white-space: nowrap;
-   flex: 1;
+   flex: 1 1;
  }
  .list-item input[type="text"] {
    background: transparent;
@@ -907,7 +936,8 @@
  }
  .loading-item .glow-checkbox,
  .loading-item .glow-text span {
-   animation: glow 1.5s ease-in-out infinite;
+   -webkit-animation: glow 1.5s ease-in-out infinite;
+           animation: glow 1.5s ease-in-out infinite;
    background: #eee;
    color: transparent;
    cursor: progress;
@@ -992,3 +1022,5 @@
    vertical-align: top;
    max-width: 100%;
  }
+
+/*# sourceMappingURL=main.67471bcc.chunk.css.map*/
